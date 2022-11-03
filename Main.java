@@ -1,12 +1,11 @@
-
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-                  porzadkowanie(5,4,3);
-                  czyPada();
-                  premia();
+                studenci();
+                program();
+                parzyste();
     }
     public static int getInt(){
         return new Scanner(System.in).nextInt();
@@ -14,57 +13,56 @@ public class Main {
     public static String getString(){
         return new Scanner(System.in).nextLine();
     }
+    public static void studenci(){
+            System.out.println("Podaj z ilu studentów składa sie grupa");
+            int n = getInt();
+            int tab[] = new int[n];
+            int i = 0;
+            double suma=tab[0];
+            System.out.println("Podaj ile punktów uzyskał każdy ze studentów: ");
+            while(i<n){
+                tab[i] = getInt();
+                suma = suma + tab[i];
+                i++;
+            }
+            System.out.println("Średnia liczba punktów wynosi: "+(suma/n));
+        }
+        public static void program(){
+            int tab[] = new int[10];
+            int licznikU = 0, licznikD=0, sumaU = tab[0], sumaD = tab[0];
+            System.out.println("Podaj 10 liczb: ");
+            for(int i = 0; i<10; i++){
+                tab[i] = getInt();
+                if(tab[i]<0){
+                    licznikU++;
+                    sumaU = sumaU + tab[i];
+                }
+                else{
+                    licznikD++;
+                    sumaD = sumaD +tab[i];
+                }
+            }
+            System.out.println("Ilośc liczb ujemnych wynosi: "+licznikU);
+            System.out.println("Ilośc liczb dodatnich wynosi: "+licznikD);
+            System.out.println("Suma liczb ujemnych wynosi: "+sumaU);
+            System.out.println("Suma liczb dodatnich wynosi: "+sumaD);
+        }
+        public static void parzyste(){
+            System.out.println("Podaj z ilu liczb ma sie składać tablica: ");
+            int n = getInt();
+            int tab[] = new int[n];
+            int suma = 0;
+            for(int i = 0; i<n; i++){
+                tab[i] = getInt();
+                if(tab[i]%2==0){
+                    suma = suma + tab[i];
+                }
+            }
+            System.out.println("Suma parzystych liczb w ciągu wynosi: "+suma);
 
-        public static void porzadkowanie(int x, int y, int z){
-            if(x> y &&x> z && y > z){
-                System.out.println(z +", "+ y +", "+x);
-            }
-            else if(x> y &&x> z && z > y){
-                System.out.println(y +", "+ z +", "+x);
-            }
-            else if(y >x&& y > z &&x> z){
-                System.out.println(z +", "+x+", "+ y);
-            }
-            else if(y >x&& y > z && z >x){
-                System.out.println(x+", "+ z +", "+ y);
-            }
-            else if(z >x&& z > y &&x> y){
-                System.out.println(y +", "+x+", "+ z);
-            }
-            else{
-                System.out.println(x+", "+ y +", "+ z);
-            }
-        }
-        public static void czyPada(){
-            System.out.println("W zależności od tego czy pada napisz tak lub nie: ");
-            String deszcz = getString();
-            System.out.println("W zależności od tego czy jest autobus napisz tak lub nie: ");
-            String autobus = getString();
-            if(!(deszcz.equals("nie"))  && !(autobus.equals("nie"))){
-                System.out.println("Weź parasol, dostaniesz sie na uczelnie");
-            }
-            else if(!(deszcz.equals("nie")) && !(autobus.equals("tak"))){
-                System.out.println("Nie dostaniesz sie na uczelnie");
-            }
-            else if (!(deszcz.equals("tak")) && !(autobus.equals("nie"))){
-                System.out.println("Dostaniesz sie na uczelnie, miłego dnia i pięknej pogody!");
-            }
-        }
-        public static void premia(){
-            System.out.println("W zależności, czy masz zniżke na samochód napisz tak lub nie: ");
-            String znizka = getString();
-            System.out.println("W zależności, czy otrzymałeś premię napisz tak lub nie: ");
-            String premia = getString();
-            if(!(znizka.equals("tak")) || !(premia.equals("nie"))){
-                System.out.println("Możesz kupić samochód, zniżki na samochód nie ma!");
-            }
-            else if(!(znizka.equals("tak")) || !(premia.equals("tak"))){
-                System.out.println("Zakup samochodu trzeba odłożyć na później, zniżki na samochód nie ma");
-            }
-            else if(!(znizka.equals("nie")) || !(premia.equals("nie"))){
-                System.out.println("Możesz kupic samochód!");
-            }
         }
 
-}
+        }
+
+
 
