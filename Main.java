@@ -1,70 +1,70 @@
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
 
-        Wypisz();
-        System.out.println(getName()+" "+getWiek());
-        Obliczenia();
-        System.out.println(CzyParzysta(5));
-        System.out.println(CzyPodzielna(15));
-        System.out.println(doTrzeciej(3));
-        System.out.println(pierwiastek(100));
-        System.out.println(trojakt());
+                  porzadkowanie(5,4,3);
+                  czyPada();
+                  premia();
     }
-    public static void Wypisz() {
-         int a = -2, b = 23;
-         Scanner input = new Scanner(System.in);
-        System.out.println("Podaj c: ");
-        int c = getInt();
-        System.out.println("a  = " + a + ", b = " + b+", c = "+c);
-    }
-
     public static int getInt(){
         return new Scanner(System.in).nextInt();
     }
-    public static String getName(){
-        return "Dawid";
-    }
-    public static int getWiek(){
-        return 37;
-    }
-    public static void Obliczenia(){
-        System.out.println("Podaj dwie liczby: ");
-        int a = getInt();
-        int b=  getInt();
-        System.out.println("Suma = "+a+" + "+b+" = "+(a+b));
-        System.out.println("Różnica = "+a+" - "+b+" = "+(a-b));
-        System.out.println("Iloczyn = "+a+" * "+b+" = "+(a*b));
+    public static String getString(){
+        return new Scanner(System.in).nextLine();
     }
 
-    public static boolean CzyParzysta(int a){
-        if(a%2==0)return true;
-        return false;
-    }
-    public static boolean CzyPodzielna(int a){
-        if((a%3==0)&&(a%5==0))return true;
-        return false;
-    }
-    public static int doTrzeciej(int a){
-        return a*a*a;
-    }
-    public static double pierwiastek(int a){
-        return Math.sqrt(a);
-    }
-
-    public static boolean trojakt(){
-        int x = getInt();
-        int y = getInt();
-        Random rand = new Random();
-        int a = rand.nextInt(y-x+1)+x;
-        int b = rand.nextInt(y-x+1)+x;
-        int c = rand.nextInt(y-x+1)+x;
-        System.out.println("Wylosowane liczby to: "+a+", "+b+", "+c);
-        if(a+b>c && a+c>b && b+c>a) return true;
-        else return false;
-    }
+        public static void porzadkowanie(int x, int y, int z){
+            if(x> y &&x> z && y > z){
+                System.out.println(z +", "+ y +", "+x);
+            }
+            else if(x> y &&x> z && z > y){
+                System.out.println(y +", "+ z +", "+x);
+            }
+            else if(y >x&& y > z &&x> z){
+                System.out.println(z +", "+x+", "+ y);
+            }
+            else if(y >x&& y > z && z >x){
+                System.out.println(x+", "+ z +", "+ y);
+            }
+            else if(z >x&& z > y &&x> y){
+                System.out.println(y +", "+x+", "+ z);
+            }
+            else{
+                System.out.println(x+", "+ y +", "+ z);
+            }
+        }
+        public static void czyPada(){
+            System.out.println("W zależności od tego czy pada napisz tak lub nie: ");
+            String deszcz = getString();
+            System.out.println("W zależności od tego czy jest autobus napisz tak lub nie: ");
+            String autobus = getString();
+            if(!(deszcz.equals("nie"))  && !(autobus.equals("nie"))){
+                System.out.println("Weź parasol, dostaniesz sie na uczelnie");
+            }
+            else if(!(deszcz.equals("nie")) && !(autobus.equals("tak"))){
+                System.out.println("Nie dostaniesz sie na uczelnie");
+            }
+            else if (!(deszcz.equals("tak")) && !(autobus.equals("nie"))){
+                System.out.println("Dostaniesz sie na uczelnie, miłego dnia i pięknej pogody!");
+            }
+        }
+        public static void premia(){
+            System.out.println("W zależności, czy masz zniżke na samochód napisz tak lub nie: ");
+            String znizka = getString();
+            System.out.println("W zależności, czy otrzymałeś premię napisz tak lub nie: ");
+            String premia = getString();
+            if(!(znizka.equals("tak")) || !(premia.equals("nie"))){
+                System.out.println("Możesz kupić samochód, zniżki na samochód nie ma!");
+            }
+            else if(!(znizka.equals("tak")) || !(premia.equals("tak"))){
+                System.out.println("Zakup samochodu trzeba odłożyć na później, zniżki na samochód nie ma");
+            }
+            else if(!(znizka.equals("nie")) || !(premia.equals("nie"))){
+                System.out.println("Możesz kupic samochód!");
+            }
+        }
 
 }
+
